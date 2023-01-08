@@ -39,7 +39,12 @@ class MainActivity : AppCompatActivity() {
             val dateSelected = "${pickedMonth + 1}/" +
                     "$pickedDay/$pickedYear"
             txtDateSelected.text = dateSelected
-        },year, month, day).show()
+        },year, month, day)
+
+        // limit date picker dialog to dates in the past
+        datePickerDialog.datePicker.maxDate  =
+            System.currentTimeMillis() - 86_400_000
+        datePickerDialog.show()
     }
 
 }
